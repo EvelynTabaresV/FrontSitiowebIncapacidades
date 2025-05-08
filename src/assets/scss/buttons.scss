@@ -1,0 +1,144 @@
+@import 'src/theme/_variables.scss';
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  appearance: none !important;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 4px rgba(69, 69, 69, 0.493);
+
+  &-primary{
+    background-color: $base-color;
+    color: #ffffff;
+    border-color: $base-color;
+    appearance: none !important;
+
+    &:hover{
+      background-color: $secondary-color !important;
+      color: #ffffff;
+      border-color: $secondary-color !important;
+    }
+    &:disabled{
+      background-color: $base-color;
+      border-color: $base-color;
+    }
+    &:not(:disabled):not(.disabled):active{
+      background-color: $base-color;
+      border-color: $base-color;
+    }
+    &:focus{
+      background-color: $base-color;
+      border-color: $base-color;
+      outline-color: $base-color;
+    }
+  }
+
+  &-secondary{
+    background-color: #343333 !important;
+    color: #ffffff;
+    border-color: #343333 !important;
+    appearance: none !important;
+    &:disabled{
+      background-color: $secondary-color;
+    }
+  }
+
+  &-tertiary{
+    background-color: $tertiary-color;
+    color: $white;
+    border-color: $tertiary-color;
+    appearance: none !important;
+    text-align: center;
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $white;
+      border-color: $secondary-color;
+    }
+  }
+
+  &-outline{
+    border: 1px solid $base-color;
+    color: $base-color;
+  
+    &:hover{
+      background-color: $base-color;
+      color: $white !important;
+    }
+    &:disabled{
+      border: 1px solid $base-color;
+      color: $base-color;
+    }
+  }
+
+  &-study{
+    background-color: $base-color;
+    padding: 0 20px;
+    margin-bottom: 0.25rem;
+    border-radius: 19px;
+    color: #ffffff;
+    border-color: $base-color;
+    appearance: none !important;
+    border: none;
+  
+    &:hover{
+      color: $white !important;
+    }
+  }
+
+  &-danger{
+    background-color: #f8d7da !important;
+    border-color: #f3b9be;
+    color: #721c24 !important;
+    appearance: none !important;
+  }
+
+  &-info{
+    padding-inline: 15px;
+    background-color: #fff;
+    box-shadow: 2px 2px 7px hsla(0, 0%, 0%, 0.3);
+    border-color: #fff;
+    color: $base-color;
+    appearance: none !important;
+  
+    &:hover,
+    &:disabled {
+      color: $base-color;
+      background-color: rgb(218, 216, 216);
+      border-color: rgb(202, 201, 201);
+    }
+  }
+
+  &-outline-edit {
+    background: transparent;
+    * {
+      color: $base-color;
+    }
+    border: 1px solid $base-color;
+    appearance: none !important;
+    &:hover {
+      background: $base-color;
+      * {
+        color: #fff;
+      }
+      border: 1px solid $base-color;
+    }
+  }
+
+  &-outline-delete {
+    background: transparent;
+    * {
+      color: #1f6679;
+    }
+    border: 1px solid #1f6679;
+    appearance: none !important;
+  
+    &:hover {
+      background: #1f6679;
+      * {
+        color: #fff;
+      }
+      border: 1px solid #1f6679;
+    }
+  }
+}

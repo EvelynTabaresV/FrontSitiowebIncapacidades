@@ -1,0 +1,99 @@
+
+<header class = "header">
+    <nav class = "navbar">
+        <div class="container">
+            <div class="navbar-content d-flex justify-content-between align-items-center">
+                <div class = "brand-and-toggler d-flex align-items-center justify-content-between">
+                    <a href = "#" class = "navbar-brand d-flex align-items-center">
+                        <img src="assets/img/logoSinLetra.png" class="brand-shape" 
+                            style="max-width: 100%; height: 100%;"
+                        >                        
+                        <span class="brand-text fw-7">Medical Guard</span>
+                    </a>
+                    <button type = "button" class = "d-none navbar-show-btn" (click)="toggleNavbar()">
+                        <i class = "fas fa-bars"></i>
+                    </button>
+                </div>
+                <input type="checkbox" id="nav_check" hidden>
+                <div class = "navbar-box" [ngClass]="{ 'navbar-box-show': isNavbarOpen }">
+                    <button type = "button" class = "navbar-hide-btn" (click)="toggleNavbar()">
+                        <i class = "fas fa-times"></i>
+                    </button>
+
+                    <ul class = "navbar-nav d-flex align-items-center">
+                        <li class = "nav-item">
+                            <a routerLink="inicio/bienvenida" class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'inicio'" [class.nav-active]="activeLink === 'inicio'">
+                                Inicio
+                            </a>
+                        </li>
+                        <!-- <li class = "nav-item" *ngIf="userRole == 'no-role'">
+                            <a  routerLink="" class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'contactanos'" 
+                                [class.nav-active]="activeLink === 'contactanos'">
+                                Contáctanos
+                            </a>
+                        </li> -->
+                        <li class = "nav-item" *ngIf="userRole === 'colaborador'">
+                            <a routerLink="usuarios/registrar-incapacidad" class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'reportar'" 
+                                [class.nav-active]="activeLink === 'reportar'">
+                                Reportar incapacidad
+                            </a>
+                        </li>
+                        <li class = "nav-item" *ngIf="userRole === 'administrador'">
+                            <a routerLink="usuarios/lista-reportes-incapacidad" 
+                                class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'reportes'" 
+                                [class.nav-active]="activeLink === 'reportes'">
+                                Reportes de incapacidad
+                            </a>
+                        </li>
+                        <li class = "nav-item" *ngIf="userRole === 'colaborador'">
+                            <a routerLink="usuarios/consultar-estado-incapacidad"  
+                                class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'consultar'" 
+                                [class.nav-active]="activeLink === 'consultar'"
+                                >Consultar estado
+                            </a>
+                        </li>
+                        <li class = "nav-item" *ngIf="userRole === 'administrador'">
+                            <a  routerLink="usuarios/facturas" class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'facturas'" 
+                                [class.nav-active]="activeLink === 'facturas'"
+                            >Facturas</a>
+                        </li>
+                        <li class = "nav-item" *ngIf="userRole == 'colaborador' || userRole == 'administrador'">
+                            <a routerLink="usuarios/contacto-entidades" class = "nav-link text-white text-nowrap"
+                                (click)="activeLink = 'directorio'" 
+                                [class.nav-active]="activeLink === 'directorio'">
+                                Directorio de contactos
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="userRole === 'colaborador'">
+                            <a routerLink="usuarios/mi-cuenta" class="nav-link text-white text-nowrap"
+                                (click)="activeLink = 'cuenta'" 
+                                [class.nav-active]="activeLink === 'cuenta'">
+                                <i class="fa fa-user"></i> Mi cuenta
+                            </a>
+                        </li>
+                        <li class="nav-item btn btn-secondary" *ngIf="userRole == 'no-role'">
+                            <a routerLink="usuarios/login" class="nav-link text-white text-nowrap">
+                                Iniciar sesión
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="userRole == 'colaborador' || userRole == 'administrador'">
+                            <a title="Cerrar sesión" routerLink="inicio/bienvenida"
+                             class="nav-link text-white text-nowrap"
+                             (click)="logout()">
+                             <i class="fa fa-sign-out"></i> 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<router-outlet></router-outlet>
+

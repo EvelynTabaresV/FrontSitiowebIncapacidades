@@ -1,0 +1,336 @@
+@import 'src/theme/_variables.scss';
+
+html{
+    scroll-behavior: smooth;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* some resets & configuration */
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: unset;
+    transition: $transition-default;
+}
+
+a:focus, a:hover{
+    color: unset;
+}
+
+img, picture, video, canvas, svg{
+    max-width: 100%;
+    display: block;
+}
+input, button, textarea, select{
+    font: inherit;
+    outline: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    overflow-wrap: break-word;
+}
+textarea{
+    resize: none;
+}
+img, object, embed, video{
+    max-width: 100%;
+}
+
+
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* header section  & navbar */
+.header{
+    position: relative;
+    background-color: $clr-blue;
+    z-index: 1000;
+}
+.header *{
+    color: $clr-white;
+}
+.navbar{
+    padding: 40px 0 40px 0;
+    
+}
+.brand-and-toggler{
+    width: 100%;
+}
+.navbar-content{
+    height: 30px;
+}
+.navbar-brand .brand-shape{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $clr-white;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 12px;
+    color: $clr-blue;
+}
+
+.navbar-brand .brand-text{
+    color: $clr-white;
+    font-size: 24px;
+}
+.nav-item{
+    margin-left: 40px;
+}
+.nav-link{
+    font-weight: 400;
+    font-size: 18px;
+}
+.nav-link:hover{
+    opacity: 0.9;
+}
+.nav-link.nav-active{
+    position: relative;
+    color: $clr-white;
+    font-weight: 700;
+    opacity: 1;
+}
+.nav-link.nav-active::after{
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $clr-white;
+}
+.navbar-show-btn{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.navbar-hide-btn{
+    display: none;
+    cursor: pointer;
+    transition: $transition-default;
+}
+.navbar-hide-btn:hover{
+    opacity: 0.8;
+}
+.element-one{
+    position: absolute;
+    top: calc(56px + 41px + 63px);
+    left: 0;
+}
+.element-one img{
+    width: 60px;
+}
+
+
+
+
+@media screen and (max-width: 992px){
+    .navbar .navbar-show-btn{
+        display: block;
+    }
+
+    .navbar .navbar-hide-btn i{
+        color: $clr-black;
+    }
+
+    .navbar-box{
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 280px;
+        height: 100%;
+        box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+        z-index: 999;
+        background-color: $clr-white;
+        padding: 48px 32px 24px;
+        transform: translateX(100%);
+        transition: $transition-default;
+    }
+
+    .navbar-box-show{
+        transform: translateX(0);
+    }
+
+    .navbar-box .nav-link {
+        color: $clr-black;
+        position: relative;
+        padding-bottom: 8px;
+    }
+    .fa-sign-out{
+        color: $clr-black !important;
+    }
+    .fa-sign-out:hover{
+        color: $clr-blue !important;
+    }
+
+    .navbar-box .nav-link::after{
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 1px;
+        width: 0;
+        background-color: $clr-blue;
+        transition: $transition-default;
+    }
+    .navbar-box .nav-link:hover{
+        color: $clr-blue;
+    }
+    .navbar-box .nav-link:hover::after{
+        width: 100%;
+    }
+    .navbar-box .nav-link.nav-active{
+        color: $clr-blue;
+    }
+    .navbar-box .nav-item{
+        margin: 12px 0;
+    }
+    .navbar-box .navbar-nav{
+        flex-direction: column;
+    }
+    .navbar-box .navbar-hide-btn{
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        font-size: 24px;
+    }
+
+   
+}
+
+@media screen and (max-width: 768px){
+    /* navbar */
+    .element-one img{
+        width: 40px;
+    }
+   
+}
+
+  
+
+
+
+@media screen and (max-width: 450px){
+    .navbar-box{
+        width: 100%;
+    }
+}
+
+
+
+/* utilities classes */
+.container{
+    margin: 0 auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: calc(1273px - 32px);
+}
+
+/* text stylings and colors */
+.text{
+    color: $clr-gray;
+    mix-blend-mode: normal;
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* vertically and horizontally centered */
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.justify-content-between{justify-content: space-between;}
+
+/* buttons */
+.btn{
+    min-width: 200px;
+    height: 56px;
+    border-radius: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: $clr-white;
+    transition: $transition-default;
+}
+
+.btn:hover{
+    color: $clr-white;
+    background-color: #1472f4;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+.btn-primary{
+    background-color: $clr-blue;
+}
+.btn-primary-outline{
+    border: 1.4px solid $clr-blue;
+    color: $clr-blue;
+}
+.btn-secondary{
+    background-color: $clr-white;
+    color: $clr-blue;
+}
+.btn-white-outline{
+    color: $clr-white;
+    border: 1.4px solid $clr-white;
+}
+.btn-white-outline:hover{
+    background-color: $clr-white;
+    color: $clr-blue;
+}
+
+/* title */
+.title-box .title-box-name{
+    font-weight: 700;
+    font-size: 36px;
+}
+.title-box .title-separator{
+    height: 2px;
+    background-color: $clr-black;
+    width: 56px;
+    margin-top: 10px;
+    margin-bottom: 33px;
+}
+
+/* margin auto */
+.mx-auto{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 992px){
+    .title-box .title-box-name{
+        font-size: 32px;
+    }
+}
+
+.resize-animation-stopper *{
+    animation: none!important;
+    transition: none!important;
+}
+.nav-item a:hover .fa {
+    color: black;
+    transform: scale(1.2);
+}

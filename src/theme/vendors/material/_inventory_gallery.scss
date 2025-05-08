@@ -1,0 +1,19 @@
+.inventory-modal-gallery {
+  .modal-dialog .modal-content {
+    border: 0 !important;
+    background-color: transparent;
+  }
+  &__full-screen {
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.full-screen-backdrop {
+  background-color: rgba(0, 0, 0, 0.755) !important;
+  opacity: 0.9 !important;
+}

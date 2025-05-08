@@ -1,0 +1,88 @@
+<div class="content" style="min-width: 600px;"> 
+
+    <div style="background-color: #0567cf; height: 3rem; width: 100%;">
+        <mat-dialog-actions style="justify-content: flex-end;">
+            <button mat-button mat-dialog-close style="cursor: pointer; 
+                color: #ecedf0; font-size: 18px; 
+                font-weight: bold; background: transparent;
+                border: none;">
+                <i class="fa-solid fa-x"></i>
+            </button>
+        </mat-dialog-actions>
+    </div>
+
+    <h2 mat-dialog-title style="font-family: 'Arial', sans-serif; color: #0e2362; text-align: center;">
+        <strong style="font-size: 23px;" class="">Registrar pago de incapacidad </strong>
+    </h2>  
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <i style="color:#fc67d2; font-size: 50px;" class="fa-solid fa-file-invoice-dollar"></i>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <form [formGroup]="form">
+            <div class="mat-form-field-flex">
+                <strong><label>ID:</label></strong> {{data.id}}
+            </div>
+            <br>
+            <div class="mat-form-field-flex">
+                <strong><label>Detalle del pago</label></strong>
+                <br>
+                <input formControlName="paymentDetail" style="width: 30rem; height: 2rem;" placeholder="Detalle del pago">
+                <div *ngIf="form.get('paymentDetail')?.touched && form.get('paymentDetail')?.invalid">
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paymentDetail')?.errors?.['required']">Detalle del pago es requerido.</div>
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paymentDetail')?.errors?.['maxlength']">El detalle de pago es demasiado largo.</div>
+                </div>
+            </div>
+            <br>
+            
+            <div class="mat-form-field-flex">
+                <strong><label>Días pagados</label></strong>
+                <br>
+                <input formControlName="paidDays" type="number" style="width: 30rem;height: 2rem;" placeholder="0">
+                <div *ngIf="form.get('paidDays')?.touched && form.get('paidDays')?.invalid">
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paidDays')?.errors?.['required']">Días pagados es requerido.</div>
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paidDays')?.errors?.['max']">Los días pagados no puede ser más de 180.</div>
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paidDays')?.errors?.['min']">El número de días es inválido.</div>
+
+                </div>
+            </div>
+            <br>
+            <div class="mat-form-field-flex">
+                <strong><label>Fecha de pago</label></strong>
+                <br>
+                <input formControlName="paymentDate" type="date" style="width: 30rem;height: 2rem;">
+                <div *ngIf="form.get('paymentDate')?.touched && form.get('paymentDate')?.invalid">
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paymentDate')?.errors?.['required']">Fecha de pago es requerida.</div>
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paymentDate')?.errors?.['forbiddenYear']">La fecha de pago es inválida.</div>
+                </div>
+            </div>
+            <br>
+            <div class="mat-form-field-flex">
+                <strong><label>Valor pagado</label></strong>
+                <br>
+                <input formControlName="paidValue" type="number"  style="width: 30rem;height: 2rem;" placeholder="0">
+                <div *ngIf="form.get('paidValue')?.touched && form.get('paidValue')?.invalid">
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paidValue')?.errors?.['required']">Valor pagado es requerido.</div>
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paidValue')?.errors?.['min']">El valor pagado es inválido.</div>
+                    <div style="font-weight:bolder; color: #fc67d2" *ngIf="form.get('paidValue')?.errors?.['max']">El valor pagado es inválido.</div>
+                </div>
+                <div *ngIf="form.get('paidValue')?.valid">
+                    {{ formatValue(form.get('paidValue')?.value) }}
+                </div>
+            </div>        
+            <br>
+        </form>
+    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;">
+        <button class="btn btn-primary"
+            (click)="changeStatusInvoice()"
+            style="font-size: 15px; 
+            padding: 10px 10px; margin-right: 20px; margin-bottom: 15px;"
+           >Guardar
+        </button>
+        <button class="btn btn-secondary"
+            style="font-size: 15px; 
+            padding: 10px 10px; margin-left: 2px; margin-bottom: 15px;"
+            mat-button mat-dialog-close>Cancelar
+        </button>
+    </mat-dialog-actions>
+</div>

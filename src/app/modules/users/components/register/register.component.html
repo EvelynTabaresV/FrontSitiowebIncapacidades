@@ -1,0 +1,76 @@
+<div class="contenedor-container">
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form [formGroup]="registerForm" (ngSubmit)="registrar()">
+            <h2 class="title">Registrarse</h2>
+  
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Nombres" formControlName="nombres" />
+            </div>
+  
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Apellidos" formControlName="apellidos" />
+            </div>
+  
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Correo" formControlName="correo" />
+            </div>
+            <label style="color: rgb(94, 92, 100); position: relative; left: -94px; top: 18px; font-weight: 600;">Fecha de nacimiento</label>
+
+            <div class="input-field">
+              <i class="fa-solid fa-calendar-days"></i>
+              <input type="date" placeholder="Fecha de nacimiento" formControlName="fechaNacimiento"
+                [min]="getFechaMinima()" [max]="getFechaMaxima()" />
+            </div>
+  
+            <div class="input-field">
+              <i class="fa-solid fa-phone"></i>
+              <input type="number" placeholder="Telefono celular" formControlName="telefonoCelular" />
+            </div>
+  
+            <div class="input-field">
+              <i class="fa-solid fa-hashtag"></i>
+              <input type="number" placeholder="Numero de documento" formControlName="numeroDocumento" />
+            </div>
+  
+            <div class="input-field">
+              <i class="fa-solid fa-list"></i>
+              <select class="select-style" placeholder="Género" formControlName="genero">
+                <option disabled value="">Seleccione una opción</option>
+                <option value="masculino">masculino</option>
+                <option value="memenino">femenino</option>
+                <option value="otro">otro</option>
+              </select>
+            </div>
+  
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" formControlName="contraseña" />
+            </div>
+  
+            <input type="submit" class="btn" value="regístrate" />
+          </form>
+        </div>
+      </div>
+  
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>¿Tienes una cuenta?</h3>
+            <p>
+                Accede a tu cuenta para gestionar tus incapacidades de manera eficiente con Medical Guard.
+            </p>
+            
+            <button class="btn transparent" routerLink="/usuarios/login" id="sign-in-btn">
+              Iniciar Sesión
+            </button>
+            <img src="assets/img/banner-image.png" class="image" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

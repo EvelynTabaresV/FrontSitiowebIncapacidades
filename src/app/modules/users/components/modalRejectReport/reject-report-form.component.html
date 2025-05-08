@@ -1,0 +1,38 @@
+<div style="background-color: #0567cf; height: 3rem; width: 100%;">
+    <mat-dialog-actions style="justify-content: flex-end;">
+        <button mat-button mat-dialog-close style="cursor: pointer; color: #ecedf0; font-size: 18px; font-weight: bold; background: transparent; border: none;">X</button>
+    </mat-dialog-actions>
+</div>
+
+<h2 mat-dialog-title style="font-family: 'Arial', sans-serif; color: #0e2362; text-align: center;">
+    <strong style="font-size: 23px;" *ngIf="type_document === true ">Notificar causa del rechazo  </strong>
+    <strong style="font-size: 23px;" *ngIf="type_document === false">Rechazar reporte de incapacidad</strong></h2>    
+<form [formGroup]="rejectForm">
+    <mat-dialog-content>
+        <p> A continuación seleccione la causa de rechazo </p>
+        <mat-radio-group formControlName="rejectionReason"  aria-label="Select an option">
+            <mat-radio-button value="Documentación problemática">
+                Documentación errónea, ilegible o dañada
+            </mat-radio-button>
+            <br>
+            <mat-radio-button value="Datos incorrectos">
+                Los datos del colaborador son incorrectos
+            </mat-radio-button>
+            <br>
+            <mat-radio-button value="Incapacidad improcedente">
+                Incapacidad improcedente
+            </mat-radio-button>
+        </mat-radio-group>
+        <br><br>
+        <textarea formControlName="observations" matInput placeholder="Observaciones"
+            style="width: 100%; resize: vertical; min-height: 100px;">
+        </textarea>  
+        <br><br>
+        <button mat-dialog-close
+            (click)="onSubmit()"
+            class="btn btn-primary" style="font-size: 15px; 
+            padding: 10px 10px; margin: auto; display: block;"> 
+            Guardar
+        </button>
+    </mat-dialog-content>    
+</form>

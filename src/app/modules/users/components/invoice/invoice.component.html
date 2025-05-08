@@ -1,0 +1,91 @@
+
+<div class="body">
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1 style="color: #f96ebf; border-color: #de5ea9;"><strong>Facturas de incapacidad</strong></h1>
+            <div class="input-group">
+                <div class="select-container">
+                    <select [(ngModel)]="selectedFilter" (change)="onFilterChange()" class="form-control btn select-with-arrow">
+                        <option value="" disabled selected>Selecciona un filtro </option>
+                        <option value="name_entity">Entidad</option>
+                        <option value="status">Estado de la factura</option>
+                        <option value="collaborator_document">Documento</option>
+                        <option value="payment_date">Fecha de pago</option>
+                        <option value="disability_dates">Fecha inicio incapacidad</option>
+                        <option (click)="applyFilter()" value="all">Todos los reportes</option>
+                    </select>
+                    <i class="arrow down"></i>
+                </div>
+                <input type="search" [(ngModel)]="filterValue" [disabled]="selectedFilter === 'all'" placeholder="Ingrese valor...">
+                <button style="cursor:pointer; padding: 4px 8px;" class="btn btn-secondary" (click)="applyFilter()">Buscar</button>
+            </div>
+        </section>
+        <!-- app.component.html -->
+         <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th (click)="sortById()"> <strong> Id</strong><span class="icon-arrow">&UpArrow;</span> </th>
+                        <th (click)="sortByEntity()"><strong>Entidad</strong> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th (click)="sortByDocument()"> <strong>Documento</strong></th>
+                        <th (click)="sortByName()"><strong> <span class="icon-arrow">&UpArrow;</span>Colaborador</strong></th>
+                        <th (click)="sortByTypeDIsability()"><strong>Tipo de incapacidad</strong><span class="icon-arrow">&UpArrow;</span></th>
+                        <th (click)="sortByDate()"> <strong>Fecha de inicio incapacidad</strong><span class="icon-arrow">&UpArrow;</span></th>
+                        <th (click)="sortByPaidDays()" > <strong>Días pagados</strong><span class="icon-arrow">&UpArrow;</span></th>
+                        <th (click)="sortByPaidDate()"> <strong>Fecha de pago </strong><span class="icon-arrow">&UpArrow;</span></th>
+                        <th (click)="sortByStatus()"> <strong>Estado</strong><span class="icon-arrow">&UpArrow;</span></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let invoice of invoices" >
+                            <td> {{invoice.id}}</td>
+                            <td> {{invoice.name_entity}}</td>                            
+                            <td> 
+                                {{invoice.collaborator_document}} 
+                                <i class="icon fas fa-info-circle" title="Ver información del colaborador"
+                                    (click)="showCollaboratorInfo(invoice)"></i>
+                            </td>
+                            <td> {{invoice.employee_full_name}} </td>       
+                            <td> {{invoice.disability_type || 'Sin registrar'}} </td>                     
+                            <td> {{invoice.disability_dates || 'Sin registrar'}} </td>
+                            <td> {{invoice.days_paid_number || 'Sin registrar'}}</td>
+                            <td> {{invoice.payment_date || 'Sin registrar'}} </td>
+                            <td class="status">
+                                <p [ngClass]="{
+                                    'paid': invoice.status === 'Pagada',
+                                    'rejected': invoice.status === 'Rechazada',
+                                    'charged': invoice.status === 'Cobrada',
+                                }" [title]="getTitle(invoice.status)">
+                                    {{invoice.status}}
+                                </p>
+                                <i class="icon fas fa-times" title="Rechazar factura" 
+                                    *ngIf="invoice.status === 'Cobrada'" 
+                                    (click)="showRejectInvoice(invoice)"
+                                    style="margin-right: 10px;">
+                                </i>
+                                <i class="icon fas fa-money-bill-wave" title="Notificar pago de factura" 
+                                    *ngIf="invoice.status === 'Cobrada'"
+                                    (click)="payInvoice(invoice)"  
+                                    style="margin-right: 10px;">
+                                </i>
+                                <i class="icon fas fa-eye" title="Ver factura" 
+                                    *ngIf="invoice.status === 'Pagada' || invoice.status === 'Rechazada'" 
+                                    (click)="showInvoce(invoice)" 
+                                    style="margin-right: 10px;">
+                                </i> 
+                                
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <div style=" text-align:center; color:#de5ea9; font-weight: bolder; margin-top:5rem"*ngIf="emptyFilter === true">
+                No se encontraron resultados
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</div>
+<app-footer></app-footer>
+
+   

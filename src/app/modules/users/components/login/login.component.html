@@ -1,0 +1,37 @@
+<div class="contenedor-container">
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form class="sign-in-form" (ngSubmit)="login()">
+                    <h2 class="title">Inicia sesión</h2>
+                    <div class="input-field">
+                      <i class="fas fa-user"></i>
+                      <input type="text" placeholder="Usuario" [(ngModel)]="email" name="email" />
+                    </div>
+                    <div class="input-field ">
+                      <i class="fas fa-lock"></i>
+                      <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" />
+                    </div>
+                    <div class="passw-text"><a href="#">¿Has olvidado la contraseña?</a> </div>
+                    <input type="submit" value="Entrar" class="btn solid" />
+                </form>
+            </div>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <div> </div>
+                    <h3>¿No tienes una cuenta?</h3>
+                    <p style="font-size: medium; font-weight: 400;">
+                        Descubre cómo Medical Guard puede simplificar la gestión de incapacidades para ti y tu empresa. Regístrate ahora para comenzar.
+                    </p>
+                    <button class="btn transparent" routerLink="/usuarios/registro" id="sign-up-btn">
+                        Regístrate
+                    </button>
+                    <img src="assets/img/download-image.png" class="image" alt=""/>            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

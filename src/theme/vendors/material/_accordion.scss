@@ -1,0 +1,16 @@
+.mat-expansion-panel-header {
+  background-color: hsl(208, 7%, 46%);
+  color: white;
+
+  &.mat-expanded {
+    background-color: $base-color;
+  }
+}
+.mat-expansion-panel-header.mat-expanded:focus,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background-color: $base-color !important;
+}
+
+.mat-expansion-panel-spacing {
+  margin: 0;
+}

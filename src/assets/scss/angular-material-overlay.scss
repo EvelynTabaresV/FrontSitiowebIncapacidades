@@ -1,0 +1,12 @@
+.cdk-overlay-container {
+  z-index: 1040;
+  overflow: auto;
+}
+
+.cdk-overlay-container:has(.cdk-overlay-backdrop) {
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.cdk-overlay-container:has(.cdk-overlay-backdrop) .cdk-overlay-backdrop {
+  background: none;
+}

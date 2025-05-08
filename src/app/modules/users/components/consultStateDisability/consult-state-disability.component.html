@@ -1,0 +1,101 @@
+
+  <div class="body flex-column">
+        <main class="table" id="customers_table">
+            <section class="table__header">
+                <h1 style="color: #f96ebf; border-color: #de5ea9;"><strong>Reportes de incapacidad</strong></h1>
+                <div class="input-group">
+                    <div class="select-container">
+                        <select [(ngModel)]="selectedFilter" (change)="onFilterChange()" class="form-control btn select-with-arrow">
+                            <option value="" disabled selected>Selecciona un filtro </option>
+                            <option value="name_entity">Entidad</option>
+                            <option value="report_status">Estado del reporte</option>
+                            <option value="id">Id</option>
+                            <option value="disability_type">Tipo de incapacidad</option>
+                            <option (click)="applyFilter()" value="all">Todos los reportes</option>
+                        </select>
+                        <i class="arrow down"></i>
+                    </div>
+                    <input type="search" [(ngModel)]="filterValue" [disabled]="selectedFilter === 'all'" placeholder="Ingrese valor...">
+                    <button style="cursor:pointer; padding: 4px 8px;" class="btn btn-secondary" (click)="applyFilter()">Buscar</button>
+                </div>
+            </section>
+            <!-- app.component.html -->
+             <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th (click)="sortReportsById()">
+                                 <strong> Id</strong> <span class="icon-arrow">&UpArrow;</span>
+                            </th>
+                            <th (click)="sortReportsByEntity()">
+                                <strong>Entidad</strong><span class="icon-arrow">&UpArrow;</span>
+                            </th>
+                            <th> 
+                                <strong>Colaborador</strong>
+                            </th>
+                            <th > 
+                                <strong>Documento</strong>
+                            </th>
+                            <th (click)="sortReportsByDisabilityType()"> 
+                                <strong>Tipo de incapacidad</strong><span class="icon-arrow">&UpArrow;</span>
+                            </th>
+                            <th (click)="sortReportsByDate()"> 
+                                <strong >Fecha de inicio</strong> 
+                                <span class="icon-arrow">&UpArrow;</span>
+                            </th>
+                            <th (click)="sortReportsByExpirationDate()"> 
+                                <strong>Fecha de vencimiento</strong>
+                                <span class="icon-arrow">&UpArrow;</span> 
+                            </th>
+                            <th (click)="sortReportByStatus()"><strong>Estado</strong>
+                                <span class="icon-arrow">&UpArrow;</span> 
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let report of reports" >
+                                <td> {{report.id}}</td>
+                                <td> {{report.name_entity}}</td>    
+                                <td> {{report.name}} {{report.last_name}} </td>
+                                <td> {{report.document}} </td>
+                                <td> {{report.disability_type}} </td>
+                                <td> {{report.start_date}}</td>
+                                <td> {{report.expiration_date}}</td>     
+                                <td class="status">
+                                    <p [ngClass]="{
+                                        'rejected': report.report_status === 'Rechazada',
+                                        'completed': report.report_status === 'Diligenciada',
+                                        'transcribed': report.report_status === 'Transcrita',
+                                        'approved': report.report_status === 'Aprobada',
+                                        'paid': report.report_status === 'Pagada',
+                                    }" [title]="getTitle(report.report_status)">
+                                        {{report.report_status}}
+                                    </p>
+                                    <i class="icon fas fa-eye" title="Ver reporte" 
+                                        (click)="showReport(report)" 
+                                        style="margin-right: 10px;">
+                                    </i> 
+                                    <i class="icon fas fa-edit" title="Editar reporte" 
+                                        *ngIf="report.report_status === 'Rechazada'" 
+                                        (click)="editReport(report)" 
+                                        style="margin-right: 10px;">
+                                    </i>
+                                    <br><br>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+                <div style=" text-align:center; color:#de5ea9; font-weight: bolder; margin-top:5rem"*ngIf="emptyFilter === true">
+                    No se encontraron resultados
+                </div>
+            </section>
+
+        </main>
+
+        <script src="script.js"></script>
+
+</div>
+<app-footer></app-footer>
+
+
+       

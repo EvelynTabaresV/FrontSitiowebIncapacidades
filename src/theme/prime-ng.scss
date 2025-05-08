@@ -1,0 +1,10 @@
+@import 'src/theme/_variables.scss';
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+  background-color: $base-color !important;
+  border: 1px solid $base-color !important;
+  color: white !important;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: inset 0 0 0 0.2rem $base-color !important;
+}

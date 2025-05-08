@@ -1,0 +1,415 @@
+<div class="page-wrapper" *ngIf="userRole != 'administrador'">
+    <header class="header">
+        <div class="element-one">
+            <img src="assets/img/element-img-1.png" alt="">
+        </div>
+        <div class="banner">
+            <div class="container">
+                <div class="banner-content">
+                    <div class="banner-left">
+                        <div class="content-wrapper" style="border-radius: 15px; padding: 20px; ">
+                            <h1 class="banner-title" ><strong style="color: #0e2362;">Medical Guard</strong></h1>
+                            <h2 class="banner-subtitle" style="color: #0e2362;">Gestión de incapacidades simplificada</h2>
+                            <p class="text text-white" style="font-size: 18px;">Medical Guard es tu solución en línea para reportar y gestionar incapacidades. 
+                                Conoce el estado de tu reporte y recibe notificaciones en tu correo sobre pagos y rechazos.</p>
+                            <a href="#" style="font-size: 16px; background-color: #0e2362; color: #ffffff; padding: 10px 20px; border-radius: 5px;" class="btn btn-secondary">Reportar incapacidad</a>
+                        </div>
+                    </div>
+    
+                    <div class="banner-right d-flex align-items-center justify-content-end">
+                        <img src="assets/img/banner-image.png" alt="" style="max-width: 100%; border-radius: 15px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </header>
+    
+    <main *ngIf="userRole != 'administrador'">
+        <section class="sc-services">
+            <div class="services-shape">
+                <img src="assets/img/curve-shape-1.png" alt="">
+            </div>
+            <div class="container">
+                <div class="services-content">
+                    <div class="title-box text-center">
+                        <div class="content-wrapper">
+                            <h3 class="title-box-name" style="color: #0e2362;">Nuestros Servicios</h3>
+                            <div class="title-separator mx-auto" style="background-color: #de5ea9;"></div>
+                            <p class="text title-box-text">En Medical Guard, ofrecemos una plataforma integral para la gestión y reporte de incapacidades. Nuestro objetivo es simplificar el proceso para los colaboradores y brindarles una experiencia fluida y eficiente.</p>
+                        </div>
+                    </div>
+            
+                    <div class="services-list">
+                        <div class="services-item">
+                            <div class="item-icon">
+                                <img src="assets/img/service-icon-1.png" alt="service icon">
+                            </div>
+                            <h5 class="item-title fw-7">Reporte de Incapacidades</h5>
+                            <p class="text">Reporta y gestiona tus incapacidades de manera sencilla y rápida, desde cualquier lugar.</p>
+                        </div>
+            
+                        <div class="services-item">
+                            <div class="item-icon">
+                                <img src="assets/img/service-icon-2.png" alt="service icon">
+                            </div>
+                            <h5 class="item-title fw-7">Notificaciones en Tiempo Real</h5>
+                            <p class="text">Recibe notificaciones por correo electrónico sobre el estado de tu incapacidad, ya sea aprobada, rechazada o pagada.</p>
+                        </div>
+            
+                        <div class="services-item">
+                            <div class="item-icon">
+                                <img src="assets/img/service-icon-3.png" alt="service icon">
+                            </div>
+                            <h5 class="item-title fw-7">Seguimiento del Proceso</h5>
+                            <p class="text">Mantente informado sobre el estado de tu reporte a medida que avanza en el proceso con la entidad y la empresa.</p>
+                        </div>
+            
+                        <div class="services-item">
+                            <div class="item-icon">
+                                <img src="assets/img/service-icon-4.png" alt="service icon">
+                            </div>
+                            <h5 class="item-title fw-7">Tablero para Administradores</h5>
+                            <p class="text">Los administradores tienen acceso a un tablero con gráficos detallados sobre los reportes y facturas, permitiendo una gestión eficiente.</p>
+                        </div>
+            
+                        <div class="services-item">
+                            <div class="item-icon">
+                                <img src="assets/img/service-icon-5.png" alt="service icon">
+                            </div>
+                            <h5 class="item-title fw-7">Directorio de Contactos</h5>
+                            <p class="text">Encuentra fácilmente la información de contacto de las entidades EPS y ARL desde nuestro directorio.</p>
+                        </div>
+            
+                        <div class="services-item">
+                            <div class="item-icon">
+                                <img src="assets/img/service-icon-6.png" alt="service icon">
+                            </div>
+                            <h5 class="item-title fw-7">Modificar y Resubir Documentos</h5>
+                            <p class="text">Si tu reporte o factura es rechazada por la entidad o el administrador, tienes la posibilidad de modificar los datos y volver a subir los documentos relacionados para una nueva revisión.</p>
+                        </div>
+                    </div>
+            
+                    <div class="d-flex align-items-center justify-content-center services-main-btn">
+                        <button type="button" class="btn btn-primary-outline" style="color: #0567cf; border-color: #0567cf;">Conoce más</button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="sc-grid sc-grid-one" style="background-color: #0e2362;">
+            <div class="container">
+                <div class="grid-content d-grid align-items-center">
+                    <div class="grid-img">
+                        <img src="assets/img/health-care-img.png" alt="Imagen de atención médica">
+                    </div>
+                    <div class="grid-text">
+                        <div class="content-wrapper text-start">
+                            <div class="title-box">
+                                <h3 class="title-box-name text-white">Líder en gestión de incapacidades</h3>
+                                <div class="title-separator mx-auto"></div>
+                            </div>
+        
+                            <p class="text title-box-text text-white">Medical Guard proporciona una gestión progresiva y asequible de incapacidades, accesible tanto en dispositivos móviles como en línea para todos.
+                                 Para nosotros, no es solo trabajo. Nos enorgullecemos de las soluciones que ofrecemos.</p>
+                            <button type="button" class="btn btn-white-outline">Más información</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sc-grid sc-grid-two">
+            <div class="container">
+                <div class="grid-content d-grid align-items-center">
+                    <div class="grid-img">
+                        <img src="assets/img/download-image.png" alt="Descarga nuestra app">
+                    </div>
+                    <div class="grid-text">
+                        <div class="content-wrapper text-start">
+                            <div class="title-box">
+                                <h3 class="title-box-name">Descarga nuestra aplicación móvil</h3>
+                                <div class="title-separator mx-auto"></div>
+                            </div>
+                            <p class="text title-box-text">Nuestra aplicación y portal web te permiten acceder a la información de forma instantánea y segura, sin formularios tediosos, largas llamadas ni complicaciones administrativas.</p>
+                            <button type="button" class="btn btn-primary-outline">
+                                Descargar
+                                <img src="assets/img/arrow-down.svg" alt="Flecha de descarga" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        
+
+        <section class="sc-feedback">
+            <div class="container">
+                <div class="feedback-content">
+                    <div class="feedback-element">
+                        <img src="assets/img/element-img-3.png" alt="">
+                    </div>
+                    <div class="feedback-element-2">
+                        <img src="assets/img/element-img-5.png" alt="">
+                    </div>
+                    <div class="title-box text-center">
+                        <div class="content-wrapper">
+                            <h3 class="title-box-name text-white">Lo que nuestros clientes dicen</h3>
+                            <div class="title-separator mx-auto"></div>
+                        </div>
+                    </div>
+        
+                    <div class="feedback-list feedback-slider owl-carousel owl-theme">
+                        <div class="feedback-item d-grid">
+                            <div class="item-left d-flex align-items-center">
+                                <div class="item-img">
+                                    <img src="assets/img/laura.jpg" alt="">
+                                </div>
+                                <div class="item-info text-white">
+                                    <p class="fw-7 name">Laura García</p>
+                                    <span class="designation fw-4">CEO de Tech Solutions</span>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <p class="text text-white">"MedicalGuard ha transformado la forma en que gestionamos las incapacidades. La plataforma es intuitiva y las notificaciones por correo son muy útiles para mantenernos informados."</p>
+                            </div>
+                        </div>
+        
+                        <div class="feedback-item d-grid">
+                            <div class="item-left d-flex align-items-center">
+                                <div class="item-img">
+                                    <img src="assets/img/maria1.jpg" alt="">
+                                </div>
+                                <div class="item-info text-white">
+                                    <p class="fw-7 name">María López</p>
+                                    <span class="designation fw-4">Gerente General de HealthCorp</span>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <p class="text text-white">"La capacidad de volver a subir documentos y modificar datos tras un rechazo es invaluable. Esto ha reducido los tiempos de espera y mejorado la satisfacción de nuestros empleados."</p>
+                            </div>
+                        </div>
+        
+                        <div class="feedback-item d-grid">
+                            <div class="item-left d-flex align-items-center">
+                                <div class="item-img">
+                                    <img src="assets/img/person-image.png" alt="">
+                                </div>
+                                <div class="item-info text-white">
+                                    <p class="fw-7 name">Juan Pérez</p>
+                                    <span class="designation fw-4">CFO de Future Enterprises</span>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <p class="text text-white">"Gracias a MedicalGuard, gestionar incapacidades es mucho más eficiente. La plataforma es fácil de usar y el soporte al cliente es excelente."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="sc-articles">
+            <div class="articles-shape">
+                <img src="assets/img/curve-shape-2.png" alt="">
+            </div>
+            <div class="container">
+                <div class="articles-content">
+                    <div class="articles-element">
+                        <img src="assets/img/element-img-2.png" alt="">
+                    </div>
+                    <div class="title-box text-center">
+                        <div class="content-wrapper">
+                            <h3 class="title-box-name">Consulta nuestros últimos artículos</h3>
+                            <div class="title-separator mx-auto"></div>
+                        </div>
+                    </div>
+        
+                    <div class="articles-list d-flex flex-wrap justify-content-center">
+                        <article class="articles-item">
+                            <div class="item-img">
+                                <img src="assets/img/article-img-1.png" alt="imagen del artículo">
+                            </div>
+                            <div class="item-body">
+                                <div class="item-title">Detección de enfermedades, chequeo en el laboratorio</div>
+                                <p class="text">En este caso, el papel del laboratorio de salud es muy importante para realizar la detección de enfermedades...</p>
+                                <a href="#" class="item-link text-blue d-flex align-items-baseline">
+                                    <span class="item-link-text">Leer más</span>
+                                    <span class="item-link-icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+        
+                        <article class="articles-item">
+                            <div class="item-img">
+                                <img src="assets/img/article-img-2.png" alt="imagen del artículo">
+                            </div>
+                            <div class="item-body">
+                                <div class="item-title">Medicinas herbales seguras para el consumo</div>
+                                <p class="text">La medicina herbal es muy utilizada en este momento debido a sus beneficios para la salud...</p>
+                                <a href="#" class="item-link text-blue d-flex align-items-baseline">
+                                    <span class="item-link-text">Leer más</span>
+                                    <span class="item-link-icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+        
+                        <article class="articles-item">
+                            <div class="item-img">
+                                <img src="assets/img/article-img-3.png" alt="imagen del artículo">
+                            </div>
+                            <div class="item-body">
+                                <div class="item-title">Cuidado natural para una piel facial saludable</div>
+                                <p class="text">Un estilo de vida saludable debe comenzar ahora y también para la salud de tu piel...</p>
+                                <a href="#" class="item-link text-blue d-flex align-items-baseline">
+                                    <span class="item-link-text">Leer más</span>
+                                    <span class="item-link-icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+</div>
+<div class="page-wrapper" *ngIf="userRole =='administrador'">
+
+    <header class="header" >
+        <div class="element-one">
+            <img src="assets/img/element-img-1.png" alt="">
+        </div>
+        <div class="sc-services">
+            <div class="services-shape">
+                <img src="assets/img/curve-shape-1.png" alt="">
+            </div>
+            <div class="container">
+                <div class="services-content">
+                    <div class="title-box text-center content-wrapper">
+                        <h3 style="color: rgb(255, 254, 254);" class="brand-text">
+                            Resumen de Reportes de Incapacidad
+                        </h3>
+                        <div class="title-separator mx-auto"></div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                        <div class="services-item-graphic1" >
+                            <h5 style="color: #7a7070; margin-top: 52px; font-size:24px;" class="item-title fw-7">
+                                <i style="color: #7a7070;" class="fas fa-file-invoice-dollar"></i> Estado del reporte
+                            </h5>
+                            <ngx-charts-pie-grid
+                            [view]="viewCircle"
+                            [scheme]="colorSchemeStatus"
+                            [results]="circle_chart_data"
+                            (select)="onSelect($event)">
+                          </ngx-charts-pie-grid>
+                        </div>
+                       
+                    </div>
+                    <br><br><br>
+                    <div class="title-box text-center content-wrapper">
+                        <h3 style="color: rgb(255, 254, 254);" class="brand-text">
+                            Resumen de Facturas 
+                        </h3>
+                        <div class="title-separator mx-auto"></div>
+                    </div>
+                    <br>
+                  
+                    <div class="banner-right d-flex align-items-center justify-content-end">
+                        <div class="services-item-graphic" style="margin-left: 20px;">
+                            <h5 style="color: #7a7070; margin-top: 52px;" class="item-title fw-7">
+                                <i style="color: #7a7070;" class="fas fa-file-invoice-dollar"></i> Estado de la factura
+                            </h5>
+                            <ngx-charts-advanced-pie-chart style="font-family: 'Arial', sans-serif; font-size: 10px; color: black;"
+                                [view]="view"
+                                [scheme]="colorScheme"
+                                [results]="single"
+                                [gradient]="gradient"
+                                [animations]="true"
+                                (select)="onSelect($event)"
+                                (activate)="onActivate($event)"
+                                (deactivate)="onDeactivate($event)"
+                            >
+                            </ngx-charts-advanced-pie-chart>
+                        </div>
+                        <div style="margin-left: 60px;" class="">
+                            <div class="banner-right d-flex align-items-center justify-content-end">
+                                <img src="assets/img/formulario.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-right d-flex flex-column align-items-center justify-content-end">
+                       
+
+                        <div class="services-item-graphic2">
+                            <h5 style="color: #7a7070; margin-top:-15px;  margin-bottom: 52px;" class="item-title fw-7">
+                                <i style="color: #7a7070;" class="fas fa-chart-bar"></i> Tipo de incapacidad pagada x año
+                            </h5>
+                            <ngx-charts-bar-vertical-2d
+                                [view]="view"
+                                [scheme]="colorScheme"
+                                [results]="multi"
+                                [gradient]="gradient"
+                                [xAxis]="showXAxis"
+                                [yAxis]="showYAxis"
+                                [legend]="showLegend"
+                                [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel"
+                                [xAxisLabel]="xAxisLabel"
+                                [yAxisLabel]="yAxisLabel"
+                                [legendTitle]="legendTitle"
+                                (select)="onSelect($event)"
+                                (activate)="onActivate($event)"
+                                (deactivate)="onDeactivate($event)">
+                            </ngx-charts-bar-vertical-2d>
+                        </div>
+                        <div class="services-item-graphic2">
+                            <h5 style="color: #7a7070; margin-top:-15px;  margin-bottom: 52px;" class="item-title fw-7">
+                                <i style="color: #7a7070;" class="fas fa-chart-bar"></i> Tipo de incapacidad pagada x mes
+                            </h5>
+                            <ngx-charts-bubble-chart
+                            [view]="view"
+                            [scheme]="colorScheme"
+                            [results]="bubbleData"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabelYear"
+                            [yAxisLabel]="yAxisLabel"
+                            [yScaleMin]="yScaleMin"
+                            [yScaleMax]="yScaleMax"
+                            [minRadius]="minRadius"
+                            [maxRadius]="maxRadius"
+                            (select)="onSelect($event)"
+                            (activate)="onActivate($event)"
+                            (deactivate)="onDeactivate($event)">
+                          </ngx-charts-bubble-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+</div>
+<app-footer></app-footer>
+
+
+<!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+<!-- owl carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- custom js -->
+<script src="assets/js/script.js"></script>

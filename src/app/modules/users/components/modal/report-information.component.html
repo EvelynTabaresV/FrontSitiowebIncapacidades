@@ -1,0 +1,179 @@
+<!-- report-dialog.component.html -->
+<div class="content" style="min-width: 600px; max-width: 900px;"> 
+    <!-- report-information.component.html -->
+    <div style="background-color: #4191e6; height: 3rem; width: 100%;">
+        <mat-dialog-actions style="justify-content: flex-end;">
+            <button mat-button mat-dialog-close style="cursor: pointer; color: #ecedf0; font-size: 18px; font-weight: bold; background: transparent; border: none;">X</button>
+        </mat-dialog-actions>
+    </div>
+    <h2 mat-dialog-title style="font-family: 'Arial', sans-serif; color: #0e2362; text-align: center;">
+        <strong style="font-size: 23px;" class="">
+            {{
+                type_document === 'factura' ? 'Factura' :
+                type_document === 'factura_rechazada' ? 'Incapacidad rechazada por la entidad' :
+                type_document === 'editReporte' ? 'Editar reporte' :
+                'Documentación del reporte'
+            }}
+        </strong>
+    </h2>
+        <mat-dialog-content *ngIf="type_document === 'reporte'">
+            <br><br>
+            <p><strong>ID:</strong> {{data.id}}</p>
+            <p><strong>Tipo de incapacidad:</strong> {{data.disability_type}}</p> 
+            <p *ngIf="data.report_status == 'Rechazada'">
+                <strong>Tipo de rechazo:</strong>
+                <span *ngIf="data.rejection_type == 'Datos incorrectos'; else problematicDocumentation">
+                    Los datos del colaborador son incorrectos
+                </span>
+                <ng-template #problematicDocumentation>
+                    <span *ngIf="data.rejection_type == 'Documentación problemática'; else otherRejectionType">
+                        Documentación errónea, ilegible o dañada
+                    </span>
+                </ng-template>
+                <ng-template #otherRejectionType>{{data.rejection_type}}</ng-template>
+            </p>    
+            <p *ngIf="data.report_status == 'Rechazada'"><strong>Observaciones:</strong> {{data.rejection_reason}}</p>
+            <br *ngIf="data.report_status == 'Rechazada'"> 
+            <p><i class="fas fa-file" style=" margin-right: 10px; color:#4191e6;"></i>
+                <strong>Documentos</strong></p>      
+           
+                <li *ngFor="let document of documents; let i = index">
+                    <p><strong>{{i + 1}}.</strong> {{document.name === 'epicrisisSoporte' ? 'Epicrisis o Soporte' :
+                        document.name === 'certificadoIncapacidad' ? 'Certificado de incapacidad' : 
+                        document.name === 'certificadoNacidoVivo' ? 'Certificado de nacido vivo' : 
+                        document.name === 'registroCivil' ? 'Registro civil' : 
+                        document.name === 'docIdentidadMadre' ? 'Documento de identidad de la madre' : document.name}}</p>                    
+                    <ul> 
+                        <p>
+                            <button class="linkDocument" title="Ver documento"
+                                (click)="openDocument(document)"
+                                style="background: none;
+                                border: none; padding: 0;
+                                color: #fc67be; cursor: pointer;">
+                                {{document.pdf_file}}
+                            </button>
+                        </p>
+                    </ul>
+                </li>
+        </mat-dialog-content>
+        <mat-dialog-content style="margin-left: 20px;" *ngIf="type_document === 'editReporte'">
+            <p><strong>ID:</strong> {{data.id}}</p>
+            <p><strong>Tipo de incapacidad:</strong> {{data.disability_type}}</p> 
+            <p *ngIf="data.report_status == 'Rechazada'">
+                <strong>Tipo de rechazo:</strong>
+                <span *ngIf="data.rejection_type == 'Datos incorrectos'; else problematicDocumentation">
+                    Los datos del colaborador son incorrectos
+                </span>
+                <ng-template #problematicDocumentation>
+                    <span *ngIf="data.rejection_type == 'Documentación problemática'; else otherRejectionType">
+                        Documentación errónea, ilegible o dañada
+                    </span>
+                </ng-template>
+                <ng-template #otherRejectionType>{{data.rejection_type}}</ng-template>
+            </p>    
+            <p *ngIf="data.report_status == 'Rechazada'"><strong>Observaciones:</strong> {{data.rejection_reason}}</p>
+            <br *ngIf="data.report_status == 'Rechazada'"> 
+            
+                <form  [formGroup]="editReportdisability"  (ngSubmit)="onSubmit()">
+                    <p>
+                        <label style="margin-right: 10px;"><strong>Fecha de inicio: </strong></label>
+                        <input type="date" formControlName="FechaExpedicion" required />
+                    </p>
+                    <p>
+                        <label style="margin-right: 10px;"><strong>Fecha de vencimiento:</strong></label>
+                        <input type="date" formControlName="FechaVencimiento" required />
+                    </p>
+                    <br>
+                
+                    <li *ngFor="let document of documents; let i = index">
+                        <p style="font-weight: bold;"><strong>{{i + 1}}.</strong> {{document.name === 'epicrisisSoporte' ? 'Epicrisis o Soporte' :
+                            document.name === 'certificadoIncapacidad' ? 'Certificado de incapacidad' : 
+                            document.name === 'certificadoNacidoVivo' ? 'Certificado de nacido vivo' : 
+                            document.name === 'registroCivil' ? 'Registro civil' : 
+                            document.name === 'docIdentidadMadre' ? 'Documento de identidad de la madre' : document.name}}
+                        </p>                    
+                        <ul> 
+                            <p>
+                                <button class="linkDocument" title="Ver documento" (click)="openDocument(document)"
+                                    style="background: none; border: none; padding: 0; color: #fc67be; cursor: pointer; font-size: 16px">
+                                    {{document.pdf_file}} <i class="fa fa-eye" style="margin-left: 5px; color: black;"></i>
+                                </button>
+                            </p>
+                            <div >
+                                <input style = "position: relative;
+                                    height: 50px;
+                                    width: 100%; outline: none;
+                                    font-size: 1rem;color: #707070;
+                                    margin-top: 8px;border: 1px solid #ddd;
+                                    border-radius: 6px; padding: 0 15px; width: 90%;
+                                    margin-top: 20px;" 
+                                    type="file" (change)="onFileChange($event, document.name)" 
+                                    accept="application/pdf" />
+                            </div>
+                        </ul>
+                    </li>
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                        <button style="height: 55px;
+                                       width: 50%;
+                                       color: #fff;
+                                       font-size: 1rem;
+                                       font-weight: 400;
+                                       margin-top: 30px;
+                                       border: none;
+                                       cursor: pointer;
+                                       transition: all 0.2s ease;" 
+                                class="btn btn-secondary" 
+                                type="submit">Guardar</button>
+                    </div>
+                </form>
+        </mat-dialog-content>
+        <mat-dialog-content *ngIf="type_document === 'factura'">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <i style="color:#fc67be; font-size: 50px;" class="fa-solid fa-circle-check"></i>
+            </div>            
+            <br><br>
+            <p><strong>ID:</strong> {{data.id}}</p>
+            <p><strong>Detalle de Pago:</strong> {{data.payment_detail || 'Sin registrar'}}</p>
+            <p><strong>Fecha de pago:</strong> {{data.payment_date}}</p>  
+            <p><strong>Fecha de inicio incapacidad:</strong> {{data.disability_dates}}</p>
+            <p><strong>Días de incapacidad pagados:</strong> {{data.days_paid_number}}</p>
+            <p><strong>Valor pagado al colaborador:</strong> {{data.paid_amount | currency:'COP ':true}}</p>            <!-- <p><strong>Tipo de incapacidad:</strong> {{data.disability_type}}</p>  -->
+            <p *ngIf="data.status == 'Rechazada'">
+                <strong>Tipo de rechazo:</strong>
+                <span *ngIf="data.rejection_type == 'Datos incorrectos'; else problematicDocumentation">
+                    Los datos del colaborador son incorrectos
+                </span>
+                <ng-template #problematicDocumentation>
+                    <span *ngIf="data.rejection_type == 'Documentación problemática'; else otherRejectionType">
+                        Documentación errónea, ilegible o dañada
+                    </span>
+                </ng-template>
+                <ng-template #otherRejectionType>{{data.rejection_type}}</ng-template>
+            </p>  
+            <br>
+            <br>
+        </mat-dialog-content>
+        <mat-dialog-content *ngIf="type_document === 'factura_rechazada'">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <i style="color:#0e2362; font-size: 50px;" class="fa-solid fa-circle-xmark"></i>
+            </div>   
+            <br><br>         
+            <p><strong>ID:</strong> {{data.id}}</p>
+            <p><strong >Fecha de inicio incapacidad:</strong> {{data.disability_dates}}</p>
+                 <p *ngIf="data.status == 'Rechazada'">
+                <strong>Tipo de rechazo:</strong>
+                <span *ngIf="data.rejection_type == 'Datos incorrectos'; else problematicDocumentation">
+                    Los datos del colaborador son incorrectos
+                </span>
+                <ng-template #problematicDocumentation>
+                    <span *ngIf="data.rejection_type == 'Documentación problemática'; else otherRejectionType">
+                        Documentación errónea, ilegible o dañada
+                    </span>
+                </ng-template>
+                <ng-template #otherRejectionType>{{data.rejection_type}}</ng-template>
+            </p>    
+            <p ><strong>Observaciones:</strong> {{data.rejection_reason}}</p>
+            <br> 
+           
+        </mat-dialog-content>
+</div>

@@ -1,0 +1,78 @@
+  <div class="articles-shape">
+    <img src="assets/img/curve-shape-2.png" alt="">
+  </div>
+    <div class="body" style= "display: flex; justify-content: center; align-items: center;">
+        <section style="margin-top: 8rem;" class="container">
+            <header style="color: #0e2362;">
+                <div>
+                    <i class="fa-solid fa-circle-user fa-2x"></i>                
+                </div>
+                <strong>Tus datos</strong>
+            </header>     
+            <form [formGroup]="userInformation" (ngSubmit)="submitForm()" action="#" class="form" >
+                <div class="input-row">
+                    <div class="input-box">
+                        <label style="color: #333;">Nombres</label>
+                        <input formControlName="firstName" class="input-box" type="text" placeholder="Nombres" />
+                        <div *ngIf="userInformation.get('firstName')?.touched && userInformation.get('firstName')?.invalid">
+                            <div style="font-weight:bolder; color: #fc67d2" *ngIf="userInformation.get('firstName')?.errors?.['pattern']">Nombre inválido.</div>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                    <label>Apellidos</label>
+                        <input formControlName="lastName" class="input-box" type="text" placeholder="Apellidos" />
+                        <div *ngIf="userInformation.get('lastName')?.touched && userInformation.get('lastName')?.invalid">
+                            <div style="font-weight:bolder; color: #fc67d2" *ngIf="userInformation.get('lastName')?.errors?.['pattern']">Apellido inválido.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-box">
+                        <label>Número de documento de identidad</label>
+                        <input formControlName="document" class="input-box" type="text" placeholder="Documento" />
+                        <div *ngIf="userInformation.get('document')?.touched && userInformation.get('document')?.invalid">
+                            <div style="font-weight:bolder; color: #fc67d2" *ngIf="userInformation.get('document')?.errors?.['pattern']">Número de documento inválido.</div>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Número de teléfono</label>
+                        <input formControlName="phoneNumber" class="input-box" type="text" placeholder="Número de télefono" />
+                        <div *ngIf="userInformation.get('phoneNumber')?.touched && userInformation.get('phoneNumber')?.invalid">
+                            <div style="font-weight:bolder; color: #fc67d2" *ngIf="userInformation.get('phoneNumber')?.errors?.['pattern']">Número de teléfono inválido.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-box">
+                        <label>Correo electrónico</label>
+                        <br>
+                        <input formControlName="email" class="input-box" type="text" placeholder="Correo electrónico" />
+                        <div *ngIf="userInformation.get('email')?.touched && userInformation.get('email')?.invalid">
+                            <div style="font-weight:bolder; color: #fc67d2" *ngIf="userInformation.get('email')?.errors?.['email']">Correo electrónico inválido.</div>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Usuario</label>
+                        <br>
+                        <input class="input-box" type="text" [(ngModel)]="userName" [ngModelOptions]="{standalone: true}" disabled  />       
+                    </div>
+                </div>
+             
+                <div class="input-box">
+                    <p style="color: #0d83e4; text-align: center;">El correo ingresado como usuario no puede 
+                        ser cambiado, pero puedes ingresar otro correo para recibir las notificaciones.</p> 
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <button style="height: 55px;
+                        width: 50%;color: #fff;
+                        font-size: 1rem; font-weight: 400;
+                        margin-top: 30px; border: none;
+                        cursor: pointer; transition: all 0.2s ease;" 
+                        class="btn btn-secondary" 
+                        type="button" (click)="toggleEdit()">{{isEditing ? 'Guardar' : 'Editar'}}</button>
+                </div>                
+            </form> 
+        </section>
+    </div>
+  <app-footer></app-footer>
+

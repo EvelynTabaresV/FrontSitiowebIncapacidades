@@ -1,0 +1,172 @@
+  <div class="head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="ReportDisability.component.scss" />
+  </div>
+  <div class="articles-shape">
+    <img src="assets/img/curve-shape-2.png" alt="">
+  </div>
+  <div class="body" style= "display: flex; justify-content: center; align-items: center;">
+    <section style="margin-top: 8rem;" class="container">
+      <header style="color: #0e2362"> <strong>Registro de incapacidad</strong></header>
+      <form action="#" [formGroup]="registerdisability"  class="form" (ngSubmit)="submitForm()">
+        <div>
+          <label>Tipo incapacidad</label>
+          <select formControlName="Tipoincapacidad" class="select-box" placeholder="tipo incapacidad " (change)="onTypeChange($event)" required>
+            <option disabled value="">Seleccione una opción</option>
+            <option value="Enfermedad general">Enfermedad General</option>
+            <option value="Accidente de tránsito">Accidente de Tránsito</option>
+            <option value="Accidente laboral">Accidente Laboral</option>
+            <option value="Licencia de maternidad">Licencia de Maternidad</option>
+            <option value="Licencia de paternidad">Licencia de Paternidad</option>
+          </select>
+          <div *ngIf="registerdisability.get('Tipoincapacidad')?.touched && registerdisability.get('Tipoincapacidad')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('Tipoincapacidad')?.errors?.['required']">Tipo de incapacidad es requerido.</div>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label>Nombre entidad</label>
+          <select formControlName="NombreEntidad" class="select-box" placeholder="Nombre entidad" required>
+            <option disabled value="">Seleccione una opción</option>
+            <option *ngFor="let entity of entities" [value]="entity.name">{{entity.name}}</option>
+          </select>
+          <div *ngIf="registerdisability.get('NombreEntidad')?.touched && registerdisability.get('NombreEntidad')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('NombreEntidad')?.errors?.['required']">Nombre de la entidad es requerido.</div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <label>fecha de expedición</label>
+            <input type="date" formControlName="FechaExpedicion" placeholder="Ingrese fecha de expedición" required />
+            <div *ngIf="registerdisability.get('FechaExpedicion')?.touched && registerdisability.get('FechaExpedicion')?.invalid">
+              <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('FechaExpedicion')?.errors?.['required']">Fecha de expedición es requerida.</div>
+            </div>
+          </div>
+          <div class="input-box">
+            <label>fecha de vencimiento</label>
+            <input type="date" formControlName="FechaVencimiento" placeholder="Ingrese fecha de vencimiento" required />
+            <div *ngIf="registerdisability.get('FechaVencimiento')?.touched && registerdisability.get('FechaVencimiento')?.invalid">
+              <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('FechaVencimiento')?.errors?.['required']">Fecha requerida.</div>
+              <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.hasError('dates')">La fecha de vencimiento no puede ser menor que la fecha de inicio.</div>            </div>
+          </div>
+        </div>
+        <style>
+          .input-box input {
+            margin-bottom: 10px;
+          }
+        </style>
+        <div *ngIf="selectedType === 'Enfermedad general'" class="input-box">
+          <label>Certificado de incapacidad (PDF)</label>
+
+          <input type="file" (change)="onFileChange($event, 'certificadoIncapacidad')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('certificadoIncapacidad')?.touched && registerdisability.get('certificadoIncapacidad')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('certificadoIncapacidad')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Soporte de incapacidad o Epicrisis (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'epicrisisSoporte')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('epicrisisSoporte')?.touched && registerdisability.get('epicrisisSoporte')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('epicrisisSoporte')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedType === 'Accidente de tránsito'" class="input-box">
+          <label>Certificado de incapacidad (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'certificadoIncapacidad')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('certificadoIncapacidad')?.touched && registerdisability.get('certificadoIncapacidad')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('certificadoIncapacidad')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Soporte de incapacidad o Epicrisis (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'epicrisisSoporte')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('epicrisisSoporte')?.touched && registerdisability.get('epicrisisSoporte')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('epicrisisSoporte')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>FURIPS (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'FURIPS')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('FURIPS')?.touched && registerdisability.get('FURIPS')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('FURIPS')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedType === 'Accidente laboral'" class="input-box">
+          <label>Certificado de incapacidad (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'certificadoIncapacidad')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('certificadoIncapacidad')?.touched && registerdisability.get('certificadoIncapacidad')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('certificadoIncapacidad')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Soporte de incapacidad o Epicrisis (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'epicrisisSoporte')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('epicrisisSoporte')?.touched && registerdisability.get('epicrisisSoporte')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('epicrisisSoporte')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedType === 'Licencia de maternidad'" class="input-box">
+          <label>Certificado de incapacidad (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'certificadoIncapacidad')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('certificadoIncapacidad')?.touched && registerdisability.get('certificadoIncapacidad')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('certificadoIncapacidad')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Epicrisis o documento donde se especifique las semanas de gestación a el momento del parto (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'epicrisisSoporte')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('epicrisisSoporte')?.touched && registerdisability.get('epicrisisSoporte')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('epicrisisSoporte')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Certificado de nacido vivo (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'certificadoNacidoVivo')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('certificadoNacidoVivo')?.touched && registerdisability.get('certificadoNacidoVivo')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('certificadoNacidoVivo')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Registro civil (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'registroCivil')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('registroCivil')?.touched && registerdisability.get('registroCivil')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('registroCivil')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Documento de identidad de la madre (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'docIdentidadMadre')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('docIdentidadMadre')?.touched && registerdisability.get('docIdentidadMadre')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('docIdentidadMadre')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedType === 'Licencia de paternidad'" class="input-box">
+          <label>Epicrisis o documento donde se especifique las semanas de gestación a el momento del parto (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'epicrisisSoporte')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('epicrisisSoporte')?.touched && registerdisability.get('epicrisisSoporte')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('epicrisisSoporte')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+          <label>Certificado de nacido vivo (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'certificadoNacidoVivo')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('certificadoNacidoVivo')?.touched && registerdisability.get('certificadoNacidoVivo')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('certificadoNacidoVivo')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Registro civil (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'registroCivil')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('registroCivil')?.touched && registerdisability.get('registroCivil')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('registroCivil')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+
+          <label>Documento de identidad de la madre (PDF)</label>
+          <input type="file" (change)="onFileChange($event, 'docIdentidadMadre')" accept="application/pdf" required />
+          <div *ngIf="registerdisability.get('docIdentidadMadre')?.touched && registerdisability.get('docIdentidadMadre')?.invalid">
+            <div style="font-weight:bolder; color: #fc67d2" *ngIf="registerdisability.get('docIdentidadMadre')?.errors?.['required']">El documento es requerido.</div>
+          </div>
+        </div>
+        <button style="left: 154px; position: relative;" class="btn btn-secondary">Guardar</button>
+      </form>
+    </section>
+  </div>
+  <app-footer></app-footer>
+
